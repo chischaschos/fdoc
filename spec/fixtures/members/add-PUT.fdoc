@@ -1,20 +1,28 @@
+---
 description: Add a new member
 requestParameters:
   properties:
     name:
       type: string
-      required: yes
+      required: true
       description: The name of the member to add, must be unique.
       example: Max Power
     email:
       type: string
-      required: no
+      required: false
       description: The email of the member to add
       example: mpower@example.com
 responseCodes:
-  - status: 200 OK
-    successful: yes
-    description: Returns the member just added
-  - status: 400 Bad Request
-    successful: no
-    description: Member already exists
+- status: 400 Bad Request
+  successful: false
+  description: Member already exists
+- status: 200
+  successful: true
+  description: Returns the member just added
+responseParameters:
+  properties:
+    email:
+      description: The email of the just created user
+      required: true
+      type: string
+      example: mrclean@test.com
